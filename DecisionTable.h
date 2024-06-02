@@ -3,7 +3,7 @@
 #include "DecisionList.h"
 namespace Decisions
 {
-	class Decisions
+	class DecisionTable
 	{
 		static bool WasInitialized;
 		static DecisionList* decisionByHash;
@@ -82,13 +82,13 @@ namespace Decisions
 		}
 
 	public:
-		static void BuildTree()
+		static void Init()
 		{
 			TicTacToe::Figures** board = new TicTacToe::Figures * [3];
 			for (int i = 0; i < 3;i++)
 				board[i] = new TicTacToe::Figures[3]{ TicTacToe::Empty };
 			TraverseTree(board);
-			int x = 2;
+			WasInitialized = true;
 		}
 
 		DecisionData operator[](TicTacToe::Figures** board)
@@ -97,6 +97,6 @@ namespace Decisions
 		}
 	};
 
-	DecisionList* Decisions::decisionByHash = new DecisionList[maxHash];
-	bool Decisions::WasInitialized = false;
+	DecisionList* DecisionTable::decisionByHash = new DecisionList[maxHash];
+	bool DecisionTable::WasInitialized = false;
 }

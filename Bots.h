@@ -35,7 +35,7 @@ namespace TicTacToeBots
 					if (boardSimple[i][j] == TicTacToe::Empty)
 					{
 						boardSimple[i][j] = playerFigure;
-						Decisions::DecisionData data = Decisions::Decisions()[boardSimple];
+						Decisions::DecisionData data = Decisions::DecisionTable()[boardSimple];
 
 						bool shouldChangeDecisionIfCross = bestP.row == -1 || (playerFigure == TicTacToe::Cross &&
 							(minData.turnsTillCrossWin > data.turnsTillCrossWin && data.turnsTillZeroWin > data.turnsTillCrossWin ||

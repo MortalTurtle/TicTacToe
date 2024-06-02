@@ -3,7 +3,7 @@
 #include <concepts>
 #include "Board.h"
 #include "Players.h"
-
+#include "DecisionTable.h"
 namespace TicTacToe
 {
 	template <std::derived_from<IBoard> TBoard>
@@ -18,7 +18,8 @@ namespace TicTacToe
 
 		void Play()
 		{
-			if (Decisions::)
+			if (!Decisions::DecisionTable::WasInitialized)
+				Decisions::DecisionTable().Init();
 			board = new TBoard();
 			while (true)
 			{
