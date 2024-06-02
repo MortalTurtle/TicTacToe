@@ -69,7 +69,7 @@ namespace TicTacToeBots
 		}
 	};
 
-	class DecisionTree
+	class DecisionTable
 	{
 		static DecisionList* decisionByHash;
 		static int GetHash(TicTacToe::Figures** board)
@@ -164,5 +164,5 @@ namespace TicTacToeBots
 		}
 	};
 
-	DecisionList* DecisionTree::decisionByHash = new DecisionList[maxHash];
+	DecisionList* DecisionTable::decisionByHash = new DecisionList[maxHash];
 }

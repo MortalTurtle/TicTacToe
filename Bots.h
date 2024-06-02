@@ -1,6 +1,6 @@
 #pragma once
 #include "Board.h"
-#include "DecisionTree.h"
+#include "DecisionTable.h"
 
 namespace TicTacToeBots
 {
@@ -35,7 +35,7 @@ namespace TicTacToeBots
 					if (boardSimple[i][j] == TicTacToe::Empty)
 					{
 						boardSimple[i][j] = playerFigure;
-						DecisionData data = DecisionTree()[boardSimple];
+						DecisionData data = DecisionTable()[boardSimple];
 
 						bool shouldChangeDecisionIfCross = bestP.row == -1 || (playerFigure == TicTacToe::Cross &&
 							(minData.turnsTillCrossWin > data.turnsTillCrossWin && data.turnsTillZeroWin > data.turnsTillCrossWin ||

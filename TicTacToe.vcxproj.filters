@@ -24,7 +24,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DecisionTree.h">
+    <ClInclude Include="DecisionTable.h">
       <Filter>Файлы заголовков\Players\DecisionTable</Filter>
     </ClInclude>
     <ClInclude Include="Bots.h">
