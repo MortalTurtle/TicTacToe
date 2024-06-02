@@ -16,6 +16,17 @@ namespace TicTacToeBots
 		DecisionData() = default;
 		DecisionData(char turnsTillZeroWin_, char turnsTillCrossWin_, char turnsTillTie_) :
 			turnsTillCrossWin(turnsTillCrossWin_), turnsTillZeroWin(turnsTillZeroWin_), turnsTillTie(turnsTillTie_) {}
+
+		static DecisionData Combine(const DecisionData& first, const DecisionData& second)
+		{
+			DecisionData sum(std::min(first.turnsTillZeroWin, second.turnsTillZeroWin),
+				std::min(first.turnsTillCrossWin, second.turnsTillCrossWin),
+				std::min(first.turnsTillTie, second.turnsTillTie));
+			sum.timesCrossWon = first.timesCrossWon + second.timesCrossWon;
+			sum.timesZeroWon = first.timesZeroWon + second.timesZeroWon;
+			sum.timesTie = first.timesTie + second.timesTie;
+			return sum;
+		}
 	};
 
 	struct DecisionNode
@@ -106,6 +117,25 @@ namespace TicTacToeBots
 			return result == TicTacToe::Tie ? TicTacToe::GameStatus::NotEnded : result;
 		}
 
+		static void ModifyDecisionByResult(DecisionData& data, TicTacToe::GameStatus result)
+		{
+			if (result == TicTacToe::CrossWon)
+			{
+				data.turnsTillCrossWin = 0;
+				data.timesCrossWon++;
+			}
+			if (result == TicTacToe::ZeroWon)
+			{
+				data.turnsTillZeroWin = 0;
+				data.timesZeroWon++;
+			}
+			if (result == TicTacToe::Tie)
+			{
+				data.turnsTillTie = 0;
+				data.timesTie++;
+			}
+		}
+
 		static DecisionData TraverseTree(TicTacToe::Figures** board, bool isCrossTurn = true)
 		{
 			DecisionData minData;
@@ -116,32 +146,11 @@ namespace TicTacToeBots
 					{
 						board[i][j] = isCrossTurn ? TicTacToe::Cross : TicTacToe::Zero;
 						DecisionData data = TraverseTree(board, !isCrossTurn);
-						minData.timesCrossWon += data.timesCrossWon;
-						minData.timesZeroWon += data.timesZeroWon;
-						minData.timesTie += data.timesTie;
 						board[i][j] = TicTacToe::Empty;
-						minData.turnsTillCrossWin = std::min(minData.turnsTillCrossWin, data.turnsTillCrossWin);
-						minData.turnsTillTie = std::min(minData.turnsTillTie, data.turnsTillTie);
-						minData.turnsTillZeroWin = std::min(minData.turnsTillZeroWin, data.turnsTillZeroWin);
+						minData = DecisionData::Combine(minData, data);
 					}
-			if (result == TicTacToe::CrossWon)
-			{
-				minData.turnsTillCrossWin = 0;
-				minData.timesCrossWon += 1;
-			}
-			if (result == TicTacToe::ZeroWon)
-			{
-				minData.turnsTillZeroWin = 0;
-				minData.timesZeroWon += 1;
-			}
-			if (result == TicTacToe::Tie)
-			{
-				minData.turnsTillTie = 0;
-				minData.timesTie += 1;
-			}
-
+			ModifyDecisionByResult(minData, result);
 			decisionByHash[GetHash(board)].Push(minData, board);
-
 			minData.turnsTillCrossWin++;
 			minData.turnsTillZeroWin++;
 			minData.turnsTillTie++;
