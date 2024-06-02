@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="Bots.h" />
+    <ClInclude Include="DecisionList.h" />
     <ClInclude Include="DecisionTable.h" />
     <ClInclude Include="Players.h" />
     <ClInclude Include="TicTacToe.h" />

@@ -27,7 +27,7 @@ namespace TicTacToeBots
 	public:
 		TicTacToe::BoardPoint decideOnNextMove(const TicTacToe::IBoard& board, TicTacToe::Figures playerFigure) const override
 		{
-			DecisionData minData;
+			DecisionTable::DecisionData minData;
 			TicTacToe::Figures** boardSimple = board.GetBoard();
 			TicTacToe::BoardPoint bestP(-1, 0);
 			for (int i = 0; i < 3;i++)
@@ -35,7 +35,7 @@ namespace TicTacToeBots
 					if (boardSimple[i][j] == TicTacToe::Empty)
 					{
 						boardSimple[i][j] = playerFigure;
-						DecisionData data = DecisionTable()[boardSimple];
+						DecisionTable::DecisionData data = DecisionTable::DecisionTable()[boardSimple];
 
 						bool shouldChangeDecisionIfCross = bestP.row == -1 || (playerFigure == TicTacToe::Cross &&
 							(minData.turnsTillCrossWin > data.turnsTillCrossWin && data.turnsTillZeroWin > data.turnsTillCrossWin ||
