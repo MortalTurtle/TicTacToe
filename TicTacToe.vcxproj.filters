@@ -13,5 +13,36 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Файлы заголовков\Board">
+      <UniqueIdentifier>{774a7e7b-f754-4d58-bba7-57cabd5c604d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Players">
+      <UniqueIdentifier>{4979552b-c53c-42ae-8cb5-76f4a93bdc0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Players\DecisionTable">
+      <UniqueIdentifier>{c751cc92-a26b-4cd4-a7ed-6f17f9dddc13}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DecisionTree.h">
+      <Filter>Файлы заголовков\Players\DecisionTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Bots.h">
+      <Filter>Файлы заголовков\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="Players.h">
+      <Filter>Файлы заголовков\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Файлы заголовков\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="TicTacToe.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
