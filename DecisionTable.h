@@ -1,11 +1,10 @@
 #pragma once
-#include "Bots.h"
 #include "DecisionList.h"
+
 namespace Decisions
 {
 	class DecisionTable
 	{
-		static bool WasInitialized;
 		static DecisionList* decisionByHash;
 		static int GetHash(TicTacToe::Figures** board)
 		{
@@ -82,13 +81,15 @@ namespace Decisions
 		}
 
 	public:
+		static bool wasInitialized;
+
 		static void Init()
 		{
 			TicTacToe::Figures** board = new TicTacToe::Figures * [3];
 			for (int i = 0; i < 3;i++)
 				board[i] = new TicTacToe::Figures[3]{ TicTacToe::Empty };
 			TraverseTree(board);
-			WasInitialized = true;
+			wasInitialized = true;
 		}
 
 		DecisionData operator[](TicTacToe::Figures** board)
@@ -98,5 +99,5 @@ namespace Decisions
 	};
 
 	DecisionList* DecisionTable::decisionByHash = new DecisionList[maxHash];
-	bool DecisionTable::WasInitialized = false;
+	bool DecisionTable::wasInitialized = false;
 }

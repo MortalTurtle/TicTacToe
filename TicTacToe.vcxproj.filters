@@ -47,5 +47,8 @@
     <ClCompile Include="Source.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="DecisionList.cpp">
+      <Filter>Файлы заголовков\Players\DecisionTable</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

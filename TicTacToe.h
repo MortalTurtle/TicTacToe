@@ -18,7 +18,7 @@ namespace TicTacToe
 
 		void Play()
 		{
-			if (!Decisions::DecisionTable::WasInitialized)
+			if (!Decisions::DecisionTable::wasInitialized)
 				Decisions::DecisionTable().Init();
 			board = new TBoard();
 			while (true)
