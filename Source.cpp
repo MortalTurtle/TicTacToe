@@ -5,7 +5,7 @@
 
 int main()
 {
-	DecisionTable::DecisionTable::BuildTree();
+	Decisions::Decisions::BuildTree();
 	TicTacToe::IPlayer* p1 = new TicTacToe::HumanPlayer<TicTacToe::HumanConsoleIO>();
 	TicTacToe::IPlayer* p2 = new TicTacToeBots::HardBot();
 	TicTacToe::TicTacToeGame game = TicTacToe::TicTacToeGame<TicTacToe::BoardConsole>(*p1, *p2);

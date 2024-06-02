@@ -1,7 +1,7 @@
 #pragma once
 #include "Board.h"
 
-namespace DecisionTable
+namespace Decisions
 {
 	const int maxHash = 400031;
 

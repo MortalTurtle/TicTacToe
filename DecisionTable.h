@@ -1,10 +1,11 @@
 #pragma once
 #include "Bots.h"
 #include "DecisionList.h"
-namespace DecisionTable
+namespace Decisions
 {
-	class DecisionTable
+	class Decisions
 	{
+		static bool WasInitialized;
 		static DecisionList* decisionByHash;
 		static int GetHash(TicTacToe::Figures** board)
 		{
@@ -96,5 +97,6 @@ namespace DecisionTable
 		}
 	};
 
-	DecisionList* DecisionTable::decisionByHash = new DecisionList[maxHash];
+	DecisionList* Decisions::decisionByHash = new DecisionList[maxHash];
+	bool Decisions::WasInitialized = false;
 }

@@ -18,6 +18,7 @@ namespace TicTacToe
 
 		void Play()
 		{
+			if (Decisions::)
 			board = new TBoard();
 			while (true)
 			{
