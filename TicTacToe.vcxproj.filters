@@ -42,6 +42,9 @@
     <ClInclude Include="DecisionList.h">
       <Filter>Файлы заголовков\Players\DecisionTable</Filter>
     </ClInclude>
+    <ClInclude Include="TicTacToeConsole.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">

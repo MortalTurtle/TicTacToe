@@ -3,27 +3,27 @@
 #include <iostream>
 #include <concepts>
 
-namespace TicTacToe
+namespace TicTacToePlayers
 {
 	class IPlayer
 	{
 	public:
-		virtual BoardPoint decideOnNextMove(const IBoard& board, Figures playerFigure) const abstract;
+		virtual TicTacToeBoard::BoardPoint decideOnNextMove(const TicTacToeBoard::IBoard& board, TicTacToeBoard::Figures playerFigure) const abstract;
 	};
 
 	class IHumanPlayerIO
 	{
 	public:
-		virtual BoardPoint GetHumanTurnPoint() const abstract;
+		virtual TicTacToeBoard::BoardPoint GetHumanTurnPoint() const abstract;
 		virtual void ReportIncorrectTurnInput() const abstract;
 	};
 
 	class HumanConsoleIO : public IHumanPlayerIO
 	{
 	public:
-		BoardPoint GetHumanTurnPoint() const override 
+		TicTacToeBoard::BoardPoint GetHumanTurnPoint() const override
 		{
-			BoardPoint p;
+			TicTacToeBoard::BoardPoint p;
 			std::cin >> p.row >> p.col;
 			return p;
 		}
@@ -42,9 +42,9 @@ namespace TicTacToe
 		{
 			delete playerIo;
 		}
-		BoardPoint decideOnNextMove(const IBoard& board, Figures playerFigure) const override
+		TicTacToeBoard::BoardPoint decideOnNextMove(const TicTacToeBoard::IBoard& board, TicTacToeBoard::Figures playerFigure) const override
 		{
-			BoardPoint p = playerIo->GetHumanTurnPoint();
+			TicTacToeBoard::BoardPoint p = playerIo->GetHumanTurnPoint();
 			while (p.row < 0 || p.row > 2 || p.col < 0 || p.col > 2
 				|| board.GetBoard()[p.row][p.col] != Figures::Empty)
 			{

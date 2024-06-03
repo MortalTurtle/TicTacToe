@@ -22,14 +22,14 @@ namespace Decisions
 
 	struct DecisionNode
 	{
-		TicTacToe::Figures** board = new TicTacToe::Figures * [3];
+		TicTacToeBoard::Figures** board = new TicTacToeBoard::Figures * [3];
 		DecisionData data;
 		DecisionNode* next = nullptr;
-		DecisionNode(const DecisionData& data, TicTacToe::Figures** board_) : data(data)
+		DecisionNode(const DecisionData& data, TicTacToeBoard::Figures** board_) : data(data)
 		{
 			for (int i = 0; i < 3;i++)
 			{
-				board[i] = new TicTacToe::Figures[3];
+				board[i] = new TicTacToeBoard::Figures[3];
 				for (int j = 0; j < 3;j++)
 					board[i][j] = board_[i][j];
 			}
@@ -40,7 +40,7 @@ namespace Decisions
 	{
 		DecisionNode* head = nullptr;
 		DecisionNode* tail = nullptr;
-		bool cmp(TicTacToe::Figures** board1, TicTacToe::Figures** board2)
+		bool cmp(TicTacToeBoard::Figures** board1, TicTacToeBoard::Figures** board2)
 		{
 			for (int i = 0; i < 3;i++)
 				for (int j = 0; j < 3;j++)
@@ -49,7 +49,7 @@ namespace Decisions
 			return true;
 		}
 	public:
-		void Push(DecisionData data, TicTacToe::Figures** board)
+		void Push(DecisionData data, TicTacToeBoard::Figures** board)
 		{
 			DecisionNode* next = new DecisionNode(data, board);
 			if (tail != nullptr)
@@ -58,7 +58,7 @@ namespace Decisions
 			tail = next;
 		}
 
-		DecisionData Find(TicTacToe::Figures** board)
+		DecisionData Find(TicTacToeBoard::Figures** board)
 		{
 			DecisionNode* currentNode = head;
 			while (currentNode != nullptr)

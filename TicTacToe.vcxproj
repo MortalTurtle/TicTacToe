@@ -25,6 +25,7 @@
     <ClInclude Include="DecisionTable.h" />
     <ClInclude Include="Players.h" />
     <ClInclude Include="TicTacToe.h" />
+    <ClInclude Include="TicTacToeConsole.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DecisionList.cpp" />
