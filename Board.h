@@ -47,27 +47,27 @@ namespace TicTacToeBoard
 
 		void CheckGameStatus()
 		{
-			TicTacToe::GameStatus result = TicTacToe::Tie;
+			GameStatus result = Tie;
 			for (int row = 0; row < 3; row++)
 				if (board[row][0] == board[row][1] && board[row][1] == board[row][2] &&
-					board[row][0] != TicTacToe::Empty)
-					result = board[row][0] == TicTacToe::Cross ? TicTacToe::GameStatus::CrossWon : TicTacToe::GameStatus::ZeroWon;
+					board[row][0] != Empty)
+					result = board[row][0] == Cross ? GameStatus::CrossWon : GameStatus::ZeroWon;
 			for (int col = 0; col < 3; col++)
 				if (board[0][col] == board[1][col] && board[1][col] == board[2][col] &&
-					board[0][col] != TicTacToe::Empty)
-					result = board[0][col] == TicTacToe::Cross ? TicTacToe::GameStatus::CrossWon : TicTacToe::GameStatus::ZeroWon;
+					board[0][col] != Empty)
+					result = board[0][col] == Cross ? GameStatus::CrossWon : GameStatus::ZeroWon;
 			if ((board[1][1] == board[0][0] && board[1][1] == board[2][2] ||
 				board[1][1] == board[2][0] && board[1][1] == board[0][2]) &&
-				board[1][1] != TicTacToe::Empty)
-				result = board[1][1] == TicTacToe::Cross ? TicTacToe::GameStatus::CrossWon : TicTacToe::GameStatus::ZeroWon;
+				board[1][1] != Empty)
+				result = board[1][1] == Cross ? GameStatus::CrossWon : GameStatus::ZeroWon;
 			int cnt = 0;
 			for (int i = 0; i < 3;i++)
 				for (int j = 0; j < 3;j++)
-					if (board[i][j] == TicTacToe::Empty)
+					if (board[i][j] == Empty)
 						cnt++;
 			if (cnt == 0)
 				status = result;
-			else status = result == TicTacToe::Tie ? TicTacToe::GameStatus::NotEnded : result;
+			else status = result == Tie ? GameStatus::NotEnded : result;
 		}
 	public:
 		BoardConsole()

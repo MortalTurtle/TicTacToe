@@ -9,12 +9,12 @@ namespace TicTacToe
 	template <std::derived_from<TicTacToeBoard::IBoard> TBoard>
 	class TicTacToeGame
 	{
-		IBoard* board;
-		const IPlayer& p1;
-		const IPlayer& p2;
+		TicTacToeBoard::IBoard* board;
+		const TicTacToePlayers::IPlayer& p1;
+		const TicTacToePlayers::IPlayer& p2;
 
 	public:
-		TicTacToeGame(const IPlayer& first, const IPlayer& second) : p1(first), p2(second) { };
+		TicTacToeGame(const TicTacToePlayers::IPlayer& first, const TicTacToePlayers::IPlayer& second) : p1(first), p2(second) { };
 
 		void Play()
 		{
@@ -24,15 +24,15 @@ namespace TicTacToe
 			while (true)
 			{
 				board->Print();
-				BoardPoint firstPlayerTurn = p1.decideOnNextMove(*board, Cross);
+				TicTacToeBoard::BoardPoint firstPlayerTurn = p1.decideOnNextMove(*board, TicTacToeBoard::Cross);
 				board->SetCross(firstPlayerTurn);
-				GameStatus status = board->ReportAndPrintGameStatus();
-				if (status != GameStatus::NotEnded)
+				TicTacToeBoard::GameStatus status = board->ReportAndPrintGameStatus();
+				if (status != TicTacToeBoard::GameStatus::NotEnded)
 					break;
-				BoardPoint secondPlayerTurn = p2.decideOnNextMove(*board, Zero);
+				TicTacToeBoard::BoardPoint secondPlayerTurn = p2.decideOnNextMove(*board, TicTacToeBoard::Zero);
 				board->SetZero(secondPlayerTurn);
 				status = board->ReportAndPrintGameStatus();
-				if (status != GameStatus::NotEnded)
+				if (status != TicTacToeBoard::GameStatus::NotEnded)
 					break;
 			}
 			delete board;

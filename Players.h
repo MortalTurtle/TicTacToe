@@ -46,7 +46,7 @@ namespace TicTacToePlayers
 		{
 			TicTacToeBoard::BoardPoint p = playerIo->GetHumanTurnPoint();
 			while (p.row < 0 || p.row > 2 || p.col < 0 || p.col > 2
-				|| board.GetBoard()[p.row][p.col] != Figures::Empty)
+				|| board.GetBoard()[p.row][p.col] != TicTacToeBoard::Figures::Empty)
 			{
 				playerIo->ReportIncorrectTurnInput();
 				p = playerIo->GetHumanTurnPoint();
