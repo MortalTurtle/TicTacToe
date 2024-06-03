@@ -7,10 +7,10 @@ namespace TicTacToe
 {
 	class TicTacToeConsole
 	{
-		static void ChoosePlayerById(int id, TicTacToe::IPlayer*& p)
+		static void ChoosePlayerById(int id, TicTacToePlayers::IPlayer*& p)
 		{
 			if (id == 1)
-				p = new TicTacToe::HumanPlayer<TicTacToe::HumanConsoleIO>();
+				p = new TicTacToePlayers::HumanPlayer<TicTacToePlayers::HumanConsoleIO>();
 			if (id == 2)
 				p = new TicTacToeBots::EasyBot();
 			if (id == 3)
@@ -19,7 +19,7 @@ namespace TicTacToe
 				p = new TicTacToeBots::HardBot();
 		}
 
-		static void ChoosePlayers(TicTacToe::IPlayer*& p1, TicTacToe::IPlayer*& p2)
+		static void ChoosePlayers(TicTacToePlayers::IPlayer*& p1, TicTacToePlayers::IPlayer*& p2)
 		{
 			std::cout << "Who is gonna play as the cross? /n enter 1 - Human, 2 - easyBot, 3 - medium bot, 4 - hard bot" << std::endl;
 			int p1Id, p2Id;
@@ -43,10 +43,10 @@ namespace TicTacToe
 	public:
 		static void StartGame()
 		{
-			TicTacToe::IPlayer* p1;
-			TicTacToe::IPlayer* p2;
+			TicTacToePlayers::IPlayer* p1;
+			TicTacToePlayers::IPlayer* p2;
 			ChoosePlayers(p1, p2);
-			TicTacToe::TicTacToeGame game = TicTacToe::TicTacToeGame<TicTacToe::BoardConsole>(*p1, *p2);
+			TicTacToe::TicTacToeGame game = TicTacToe::TicTacToeGame<TicTacToeBoard::BoardConsole>(*p1, *p2);
 			game.Play();
 			std::cout << "Do you wish to play again? If you do, write Y" << std::endl;
 			std::string str;

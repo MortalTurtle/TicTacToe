@@ -6,7 +6,7 @@
 #include "DecisionTable.h"
 namespace TicTacToe
 {
-	template <std::derived_from<IBoard> TBoard>
+	template <std::derived_from<TicTacToeBoard::IBoard> TBoard>
 	class TicTacToeGame
 	{
 		IBoard* board;
