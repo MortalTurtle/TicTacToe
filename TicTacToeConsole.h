@@ -21,7 +21,7 @@ namespace TicTacToe
 
 		static void ChoosePlayers(TicTacToePlayers::IPlayer*& p1, TicTacToePlayers::IPlayer*& p2)
 		{
-			std::cout << "Who is gonna play as the cross? /n enter 1 - Human, 2 - easyBot, 3 - medium bot, 4 - hard bot" << std::endl;
+			std::cout << "Who is gonna play as the cross? \n enter 1 - Human, 2 - easyBot, 3 - medium bot, 4 - hard bot" << std::endl;
 			int p1Id, p2Id;
 			std::cin >> p1Id;
 			while (p1Id < 1 || p1Id > 4)
@@ -29,7 +29,7 @@ namespace TicTacToe
 				std::cout << "Incorrect first player id, please try again" << std::endl;
 				std::cin >> p1Id;
 			}
-			std::cout << "Who is gonna play as the zero? /n enter 1 - Human, 2 - easyBot, 3 - medium bot, 4 - hard bot" << std::endl;
+			std::cout << "Who is gonna play as the zero? \n enter 1 - Human, 2 - easyBot, 3 - medium bot, 4 - hard bot" << std::endl;
 			std::cin >> p2Id;
 			while (p2Id < 1 || p2Id > 4)
 			{
@@ -57,6 +57,8 @@ namespace TicTacToe
 				std::cout << "Do you wish to play again? If you do, write Y" << std::endl;
 				std::cin >> str;
 			}
+			delete p1;
+			delete p2;
 		}
 	};
 }

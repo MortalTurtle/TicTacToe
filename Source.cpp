@@ -4,5 +4,6 @@
 
 int main()
 {
+	TicTacToe::TicTacToeConsole().StartGame();
 	return 0;
 }
