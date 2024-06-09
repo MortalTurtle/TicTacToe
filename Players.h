@@ -18,6 +18,8 @@ namespace TicTacToePlayers
 	public:
 		virtual TicTacToeBoard::BoardPoint GetHumanTurnPoint() const abstract;
 		virtual void ReportIncorrectTurnInput() const abstract;
+		virtual ~IHumanPlayerIO()
+		{}
 	};
 
 	class HumanConsoleIO : public IHumanPlayerIO
