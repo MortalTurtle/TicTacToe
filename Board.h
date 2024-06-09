@@ -28,6 +28,8 @@ namespace TicTacToeBoard
 	class IBoard
 	{
 	public:
+		virtual ~IBoard()
+		{}
 		virtual void SetCross(const BoardPoint& p) abstract;
 
 		virtual void SetZero(const BoardPoint& p) abstract;
@@ -41,7 +43,7 @@ namespace TicTacToeBoard
 
 	class BoardConsole : public IBoard
 	{
-		Figures** board = new Figures * [3];
+		Figures** board = new Figures*[3];
 		int emptyCnt = 9;
 		GameStatus status = GameStatus::NotEnded;
 
@@ -75,7 +77,10 @@ namespace TicTacToeBoard
 			for (int i = 0; i < 3;i++)
 				board[i] = new Figures[3]{ Empty };
 		}
-
+		~BoardConsole()
+		{
+			delete[] board;
+		}
 		void SetCross(const BoardPoint& p) override
 		{
 			board[p.row][p.col] = Cross;

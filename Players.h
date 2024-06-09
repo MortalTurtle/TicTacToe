@@ -9,6 +9,8 @@ namespace TicTacToePlayers
 	{
 	public:
 		virtual TicTacToeBoard::BoardPoint decideOnNextMove(const TicTacToeBoard::IBoard& board, TicTacToeBoard::Figures playerFigure) const abstract;
+		virtual ~IPlayer()
+		{}
 	};
 
 	class IHumanPlayerIO
